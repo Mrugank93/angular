@@ -1,0 +1,34 @@
+<form name="form" novalidate class="rate-form" id="rateform">
+    <div class="modal-header">
+        <h4>Rate Now</h4>        
+        <button class="close" ng-click="cancelrate()">x</button>
+        
+    </div>
+    <div class="modal-body">        
+        <div class="form-group">
+            <label class="control-label" for="DeliveryRating">Delivery Rating:</label>
+            <div star-rating rating-value="DeliveryRating.current" ng-model="DeliveryRating" max="DeliveryRating.max"></div>
+        </div> 
+        <div class="form-group">
+            <label class="control-label" for="QualityRating">Quality Rating:</label>
+            <div star-rating rating-value="QualityRating.current" ng-model="QualityRating" max="QualityRating.max"></div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="ServiceRating">Service Rating:</label>
+            <div star-rating rating-value="ServiceRating.current" ng-model="ServiceRating" max="ServiceRating.max"></div>
+        </div>   
+        <div class="form-group">
+            <label class="control-label" for="RatingNote">Note:</label>
+            <textarea id="RatingNote" name="RatingNote" ng-model="RatingNote"></textarea>
+        </div>       
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary login" ng-click="rate()">Rate</button>       
+       <!--  <button class="btn btn-warning cancel" ng-click="cancelrate()">Cancel</button> -->
+    </div>
+</form>
+<!-- <div class="modal-header">
+            <h3 class="modal-title">Im a modal!</h3>
+            {{msg}}
+</div> -->
+        

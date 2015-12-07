@@ -1,0 +1,30 @@
+<form name="form" novalidate class="DateTime-form" id="dateTimeform">
+    <div class="modal-header">
+        <h4>Select Date and time</h4>        
+        <button class="close" ng-click="canceldate()">x</button>
+        
+    </div>
+    <div class="modal-body">        
+        <div class="form-group">
+            <label class="control-label" for="date">Estimated Date and time is:</label>
+            
+        </div>      
+    <div class="dropdown">
+      <a class="dropdown-toggle" id="dropdown2" role="button" data-toggle="dropdown" data-target="#" href="#">
+        <div class="input-group"><input type="text" class="form-control" data-ng-model="estimatedTime"><span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+        </div>
+      </a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <datetimepicker data-ng-model="estimatedTime" data-datetimepicker-config="{ dropdownSelector: '#dropdown2' }"/>
+      </ul>
+    </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary login" ng-click="finish()" ng-disabled='form.$invalid'>Finish</button>       
+        <button class="btn btn-warning cancel" ng-click="canceldate()">Cancel</button>
+    </div>
+</form>
+
+        

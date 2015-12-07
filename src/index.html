@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html ng-app="app"  xmlns:ng="http://angularjs.org" id="ng-app" lang="en">
+<head>
+    
+    <meta charset="utf-8" />
+    <title ng-bind="title"></title>
+        <!--[if IE 8]><!--> <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <!--<![endif]-->
+        <meta name="description" content="Static &amp; Dynamic Tables" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no" />
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="Cache-Control" content="no-cache">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <!-- build:css /css/style.min.css -->
+   
+    <link rel="stylesheet" href="/css/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300' rel='stylesheet' type='text/css'>		
+		
+        <link rel="stylesheet" href="/stylesheet/slicknav.css">
+        <link rel="stylesheet" href="/stylesheet/ProximaNova-Semibold.css">
+        <link rel="stylesheet" href="/stylesheet/uikit.css">
+        <link rel="stylesheet" href="/stylesheet/font-awesome.min.css">
+        <link rel="stylesheet" href="/stylesheet/jquery.bxslider.css">
+        <link rel="stylesheet" href="/stylesheet/bootstrap.css">
+        <link rel="stylesheet" href="/stylesheet/angular-flash.css">
+        <link rel="stylesheet" href="/stylesheet/angular-bootstrap-lightbox.css"> 
+        <link rel="stylesheet" href="/stylesheet/angular-chart.css">
+       
+        <link rel="stylesheet" href="/stylesheet/animate.css">
+        <link rel="stylesheet" href="/stylesheet/datetimepicker.css">
+        <link rel="stylesheet" href="/stylesheet/ngProgress.css">
+        <link rel="stylesheet" href="/stylesheet/tablesort.css">     
+        <link rel="stylesheet" href="/stylesheet/normalize.css">
+        <link rel="stylesheet" href="/stylesheet/style.css">
+        <link rel="stylesheet" href="/stylesheet/responsive.css"> 
+
+
+        
+    <!-- endbuild -->
+</head>
+<body ng-controller="AppCtrl">
+<div ng-include="'header.tpl.html'"></div>
+<div class="page">
+    <div ng-view></div>
+</div>
+<div ng-include="'footer.tpl.html'"></div>
+<!-- build:js /app.min.js -->
+<script type="text/javascript" src="/vendor/jquery.js"></script>
+<script type="text/javascript" src="/vendor/angular.js"></script>
+<script>
+          //AUTOBAHN_DEBUG = true;
+</script>
+<!-- -->
+
+
+
+<script type="text/javascript" src="/vendor/autobahn.js"></script>
+<script type="text/javascript" src="/vendor/angular-wamp.js"></script>
+<script type="text/javascript" src="/vendor/angular-animate.js"></script>
+<script type="text/javascript" src="/vendor/bootstrap.js"></script>
+<script type="text/javascript" src="/vendor/ui-bootstrap.js"></script>
+<script type="text/javascript" src="/vendor/ui-bootstrap-tpls.js"></script>
+<script type="text/javascript" src="/vendor/angular-flash.js"></script>
+<script type="text/javascript" src="/vendor/modernizr.js"></script>
+<script type="text/javascript" src="/vendor/jquery.slicknav.js"></script>
+<script type="text/javascript" src="/vendor/uikit.js"></script>
+<script type="text/javascript" src="/vendor/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/vendor/jquery.bxslider.js"></script>
+<script type="text/javascript" src="/vendor/jquery.scrollUp.js"></script>
+
+<script type="text/javascript" src="/vendor/angular-cookies.js"></script>
+<script type="text/javascript" src="/vendor/angular-resource.js"></script>
+<script type="text/javascript" src="/vendor/angular-route.js"></script>
+
+<script type="text/javascript" src="/vendor/angular-ui-router.js"></script>
+<script type="text/javascript" src="/vendor/lodash.js"></script>
+<script type="text/javascript" src="/vendor/numeral.js"></script>
+<script type="text/javascript" src="/vendor/ngProgress.js"></script>
+
+<script type="text/javascript" src="/vendor/angular-sanitize.js"></script>
+<script type="text/javascript" src="/vendor/angular-touch.js"></script>
+<script type="text/javascript" src="/vendor/console-sham.js"></script>
+<script type="text/javascript" src="/vendor/ng-file-upload-shim.js"></script>
+<script type="text/javascript" src="/vendor/ng-file-upload.js"></script>
+<script type="text/javascript" src="/vendor/moment.js"></script>
+<script type="text/javascript" src="/vendor/datetimepicker.js"></script>
+<script type="text/javascript" src="/vendor/angular-tablesort.js"></script>
+<script type="text/javascript" src="/vendor/angular-local-storage.js"></script>
+<script type="text/javascript" src="/vendor/angular-bootstrap-lightbox.js"></script>
+<script type="text/javascript" src="/vendor/Chart.js"></script>
+<script type="text/javascript" src="/vendor/angular-chart.js"></script>
+
+
+
+
+	<script>
+		$(function () {
+		  $.scrollUp({
+			scrollName: 'scrollUp', // Element ID
+			topDistance: '500', // Distance from top before showing element (px)
+			topSpeed: 500, // Speed back to top (ms)
+			animation: 'slide', // Fade, slide, none
+			animationInSpeed: 400, // Animation in speed (ms)
+			animationOutSpeed: 400, // Animation out speed (ms)
+			scrollText: 'Scroll to top', // Text for element
+			activeOverlay: true, // Set CSS color to display scrollUp active point, e.g '#00FFFF'
+			});
+			});
+		</script>
+     
+		<script type="text/javascript" src="/vendor/plugins.js"></script>
+    <script type="text/javascript" src="/vendor/main.js"></script>
+
+        <!-- <script type="text/javascript" src="/vendor/store.js"></script>
+        // <script type="text/javascript" src="/vendor/product.js"></script>
+        // <script type="text/javascript" src="/vendor/cart.js"></script> -->
+		<script type="text/javascript" src="/app.js"></script>
+
+<!-- endbuild -->
+</body>
+</html>

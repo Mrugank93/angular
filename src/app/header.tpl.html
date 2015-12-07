@@ -1,0 +1,196 @@
+<div ng-controller="HeaderCtrl">
+    <div ng-if="!isAdmin()">
+        <div class="navbar  navbar-fixed-top header_top_manu" >
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-10">
+                        <div class="mainmenu">                        
+                            <ul id="nav">
+                                <!-- <li><a  href="/">About Us</a></li> -->
+                                 <li ng-if="!isAuthenticated()" ng-class="{active: isActive('/')}"><a id="active" href="/">Home</a></li>
+                                <li><a href="/">Plastics </a></li>
+                                <li><a href="">Process </a></li>
+                                <li><a href="">Training </a></li>
+                                <li><a href=""> Membership</a></li>
+                                <li><a href="">Carrers</a></li>
+                                <li><a href="">New Products</a></li>
+                                <li><a href="">Franchise</a></li>
+                                <li><a href=""> Blog</a></li>
+                              <!--   <li ng-if="isAuthenticated()" ng-class="{active: isActive('/account/bookjobs')}"><a href="/account/bookjobs">Jobs</a></li> -->
+                                <li ng-if="isAuthenticated()"><a href="" ng-click="popUp()"><i class="fa fa-user"></i>{{username}}/{{shopname}}</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="plast_logo_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true, delay:250}" class="logo">
+                            <img src="/img/logo.jpg" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+                        <div class="color_menu">
+                            <ul>
+                                <li ng-if="isAuthenticated()"><a class="color_3" href="/account/bookjobs" id="bookjobs">Jobs</a></li>
+                                <li ng-if="isAuthenticated() && subAdmin!=true"><a class="color_3" href="/account/store" id="store">Shop</a></li>
+                                <li ng-if="isAuthenticated() && subAdmin!=true"><a class="color_3" href="/account/repairbit" id="repairbits">Repair Bits</a></li>
+                                <li ng-if="isAuthenticated() && subAdmin!=true"><a class="color_3" href="" id="analytics">Analytics</a></li>
+                                <li ng-if="!isAuthenticated()"><a class="color_3" href="/login" id="login">Log In </a></li>
+                                <li ng-if="!isAuthenticated()" ng-class="{active: isActive('/signup')}"><a class="color_3" href="/signup" id="signup">Sign Up</a></li>
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <div class="color_text">
+                            <h3>1300 876 123</h3>
+                            <p>sales@plastfix.com</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" ng-if="subAdmin && hasFlash">
+        <!-- subadmin -->
+            <div class="col-xs-12 flash-fix">
+                
+                    <div class="section">  
+                        <div flash-message ></div>                
+                    </div>
+              
+            </div>
+        </div>  
+
+        <div class="container" ng-if="!subAdmin && hasFlash">
+        <!-- normal -->
+            <div class="col-xs-12 flash-fix">
+                
+                    <div class="section">  
+                        <div flash-message ></div>                
+                    </div>
+              
+            </div>
+        </div>    
+
+    </div>
+</div>   
+<div ng-controller="AdminHeaderCtrl">
+   <div ng-if="isAdmin()">
+    <div class="navbar navbar-fixed-top header_top_manu" >
+    <div class="container">      
+        <!-- <div class="navbar-collapse collapse" collapse="adminMenuCollapsed"> -->
+            <!-- <ul class="nav navbar-nav">
+                <li class="dropdown" dropdown is-open="status.isopen">
+                    <a href="#" class="dropdown-toggle navbar-dropdown-admin" dropdown-toggle>System&nbsp;<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header">Pivoted Settings</li>
+                        <li><a href="/admin/bookjobs" ng-click="closeAdminMenu()">Book Job</a></li>                      
+                        <li class="divider"></li>
+                        <li class="dropdown-header">User Admin</li>
+                        <li><a href="/admin/users" ng-click="closeAdminMenu()">Users</a></li>
+                        <li><a href="/admin/accounts" ng-click="closeAdminMenu()">Accounts</a></li>
+                        <li><a href="/admin/administrators" ng-click="closeAdminMenu()">Administrators</a></li>
+                        <li><a href="/admin/admin-groups" ng-click="closeAdminMenu()">Admin Groups</a></li>
+                    </ul>
+                </li>
+            </ul> -->
+            <!-- <form name="form" class="navbar-form navbar-right">
+                <div class="dropdown" dropdown is-open="resultIsOpen">
+                    <input name="search" type="text" placeholder="search" class="form-control" ng-model="query" ng-model-options="{ debounce: 500 }" ng-change="update()">
+                    <ul class="dropdown-menu">
+                        <li class="dropdown-header" ng-show="showDropdownHeader('noDocsMatched')">no docs matched</li>
+                        <li class="dropdown-header" ng-show="showDropdownHeader('Users')">Users</li>
+                        <li ng-repeat="user in result.users">
+                            <a ng-bind="user.username" ng-href="/admin/users/{{user._id}}" ng-click="closeAdminMenu()"></a>
+                        </li>
+                        <li class="dropdown-header" ng-show="showDropdownHeader('Accounts')">Accounts</li>
+                        <li ng-repeat="account in result.accounts">
+                            <a ng-bind="account.name.full" ng-href="/admin/accounts/{{account._id}}" ng-click="closeAdminMenu()"></a>
+                        </li>
+                        <li class="dropdown-header" ng-show="showDropdownHeader('Administrators')">Administrators</li>
+                        <li ng-repeat="admin in result.administrators">
+                            <a ng-bind="admin.name.full" ng-href="/admin/administrators/{{admin._id}}" ng-click="closeAdminMenu()"></a>
+                        </li>
+                    </ul>
+                </div>
+            </form> -->
+        <!-- </div> -->
+        <div class="row">
+                    <div class="col-lg-9 col-md-9 col-sm-12 col-xs-10">
+                        <div class="mainmenu">
+                            <ul id="nav">
+                                <!-- <li><a  href="/">About Us</a></li> -->
+                                 <li ng-if="!isAuthenticated()" ng-class="{active: isActive('/')}"><a id="active" href="/">Home</a></li>
+                                <li><a href="/">Plastics </a></li>
+                                <li><a href="">Process </a></li>
+                                <li><a href="">Training </a></li>
+                                <li><a href=""> Membership</a></li>
+                                <li><a href="">Carrers</a></li>
+                                <li><a href="">New Products</a></li>
+                                <li><a href="">Franchise</a></li>
+                                <li><a href=""> Blog</a></li>
+                                <!-- <li ng-if="isAuthenticated()" ng-class="{active: isActive('/admin/bookjobs')}"><a href="/admin/bookjobs">Jobs</a></li> -->
+                                <li ng-if="isAuthenticated()"><a href="" ng-click="logout()"><i class="fa fa-user"></i> {{username}}/SignOut</a></li> 
+                            </ul>
+                        </div>
+                    </div>
+                   <!--  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                        <div class="header_input">
+                            <p><input id="search" type="" placeholder="Search..." /><i class="fa fa-search"></i></p>
+                        </div>
+                    </div> -->
+                </div>
+    </div>
+    </div>
+    <div class="plast_logo_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div  class="logo">
+                            <img src="/img/logo.jpg" alt="" />
+                        </div>
+                    </div>                   
+                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12">
+                        <div class="color_menu">
+                            <ul>
+                                <li ng-if="isAuthenticated()"><a class="color_3" href="/admin/bookjobs" id="bookjobs">Jobs</a></li>
+                                <li ng-if="isAuthenticated()"><a class="color_3" href="/admin/mystore" id="mystore">Shop</a></li>
+                                <li ng-if="isAuthenticated()"><a class="color_3" href="/admin/subadmin" id="subadmin">Create Admin</a></li>
+                              <!--   <li ng-if="isAuthenticated()"><a class="color_3" href="" id="repairbits">Repair Bits</a></li> -->
+                                <li ng-if="isAuthenticated()"><a class="color_3" href="/admin/analytics" id="analytics">Analytics</a></li>
+                                <!-- <li ng-if="!isAuthenticated()"><a class="color_5" href="/login">Log In </a></li>
+                                <li ng-if="!isAuthenticated()" ng-class="{active: isActive('/signup')}"><a class="color_5" href="/signup">Sign Up</a></li> -->
+                              
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-12 col-xs-12">
+                        <div class="color_text">
+                            <h3>1300 876 123</h3>
+                            <p>sales@plastfix.com</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>   
+
+    <div class="container" ng-if="hasFlash">
+        <div class="col-xs-12 flash-fix">
+          <!-- admin -->
+                <div class="section">  
+                    <div flash-message ></div>                
+                </div>
+          
+        </div>
+    </div>                
+
+  </div>
+</div>

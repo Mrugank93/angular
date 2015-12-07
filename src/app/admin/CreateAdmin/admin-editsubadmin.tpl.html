@@ -1,0 +1,53 @@
+<div class="container" id="admin-categories-index">
+  <div class="col-xs-8">
+    <div class="page-header">
+      <h1><a href="/admin/subadmin">Back To Home</a></h1>
+    </div>
+    <form name="EditSubAdminForm" role="form">     
+      <alert ng-repeat="alert in detailAlerts" type="{{alert.type}}" close="closeDetailAlert($index)">{{alert.msg}}</alert>        
+      
+      <div class="form-group">
+        <label class="control-label" for="email">Email:</label>
+        <input name="email" type="text" placeholder="enter email id" class="form-control" ng-model="editSubAdminDetail.email" required>
+      </div>
+       <div class="form-group">
+        <label class="control-label" for="password">Password:</label>
+        <input type="password" name="password" id="password" placeholder="enter password" class="form-control" ng-model="editSubAdminDetail.password" required>
+      </div>
+     
+      <div class="form-group">
+        <label class="control-label" for="name">Name:</label>
+        <input name="name" type="text" placeholder="enter name" class="form-control" ng-model="editSubAdminDetail.name" required>
+      </div>     
+      <div class="form-group">
+        <label class="control-label" for="phone">Phone:</label>
+        <input name="phone" type="text" placeholder="enter phone no" class="form-control" ng-model="editSubAdminDetail.phone" required>
+      </div> 
+      <div class="form-group">
+        <label class="control-label" for="Mobile">Mobile no:</label>
+        <input name="Mobile" type="text" placeholder="enter mobile no" class="form-control" ng-model="editSubAdminDetail.Mobile" required>
+      </div>  
+      <div class="form-group">
+        <label class="control-label" for="Address">Address:</label>
+        <textarea name="Address" id="Address" class="form-control" ng-model="editSubAdminDetail.Address" placeholder="enter address" required></textarea>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="shopName">Shop Name:</label>
+        <input name="shopName" type="text" placeholder="Enter Shop Name" class="form-control" ng-model="editSubAdminDetail.shopName" required>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="shopaddress">Shop Address:</label>
+        <textarea id="shopaddress" name="shopaddress" id="shopaddress" class="form-control" ng-model="editSubAdminDetail.shopaddress" placeholder="enter shop address" required></textarea>
+      </div>  
+     
+      <button type="button" class="btn btn-primary" ng-disabled="!canSave(EditSubAdminForm)" ng-click="EditSubAdmin()">Edit Sub Admin</button>
+     </form>
+     <br>
+     <form name="deleteForm"><fieldset>            
+            <alert ng-repeat="alert in deleteAlerts" type="{{alert.type}}" close="closeDeleteAlert($index)">{{alert.msg}}</alert>            
+            <div class="form-group">
+                <button type="button" class="btn btn-danger btn-delete" ng-click="deleteSubAdmin()">Delete</button>
+            </div>
+        </fieldset></form>
+  </div>
+</div>

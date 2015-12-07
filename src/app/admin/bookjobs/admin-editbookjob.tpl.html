@@ -1,0 +1,183 @@
+<div class="container">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <h1><a href="/admin/bookjobs">BookedJob /{{editbookjob.OrderNo}}</a></h1>
+        </div> 
+        <legend>Details <!-- {{editbookjob.Status}} --></legend>      
+        <table class="table table-striped">
+          
+          <tbody>
+          <tr>
+            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> User Name:</td>
+            <td>{{editbookjob.userName}}</td>
+          </tr>
+          <tr>
+            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> Shop Name:</td>
+            <td>{{editbookjob.shopName}}</td>
+          </tr>
+          <tr>
+          <tr>
+            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> Address:</td>
+            <td>{{editbookjob.userAddress}}</td>
+          </tr>      
+            <td class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> Pick Up Time:</td>
+            <td>{{editbookjob.PickupTime | timeFormat }}</td>
+          </tr>
+          <tr>
+            <td> Pick Up Date: </td>
+            <td> {{editbookjob.pickupdate | dateFormat }}</td>
+          </tr>
+          <tr>
+            <td> Part: </td>
+            <td> {{editbookjob.Part}} </td>
+          </tr>
+          <tr>
+            <td> Make: </td>
+            <td> {{editbookjob.make}}</td>
+          </tr>
+          <tr>
+            <td> Model: </td>
+            <td>{{editbookjob.model}}</td>
+          </tr>
+          <tr>
+            <td> Year:</td>
+            <td>{{editbookjob.year}}</td>
+          </tr>
+          <tr ng-if="editbookjob.price!=null">
+            <td> Price:</td>
+            <td>${{editbookjob.price}}</td>
+          </tr>
+          <tr ng-if="editbookjob.freightCost!=null">
+            <td> Freight Cost:</td>
+            <td>${{editbookjob.freightCost}}</td>
+          </tr>
+           <tr ng-if="editbookjob.DeliveryRating!=null">
+            <td> Delivery Rating:</td>
+            <td><!-- {{editbookjob.DeliveryRating}} -->
+              <div class="rate-fix" star-rating rating-value="editbookjob.DeliveryRating" max="10"></div>
+            </td>
+          </tr>
+          <tr ng-if="editbookjob.QualityRating!=null">
+            <td> Quality Rating:</td>
+            <td><!-- {{editbookjob.QualityRating}}    -->
+              <div class="rate-fix" star-rating rating-value="editbookjob.QualityRating" max="10" ng-disabled="true"></div>
+            </td>
+          </tr>
+          <tr ng-if="editbookjob.ServiceRating!=null">
+            <td> Service Rating:</td>
+            <td><!-- {{editbookjob.ServiceRating}}  -->
+              <div class="rate-fix" star-rating rating-value="editbookjob.ServiceRating" max="10"></div>
+            </td>
+          </tr>
+          <tr ng-if="editbookjob.RatingNote!=null">
+            <td> Rating Note:</td>
+            <td>{{editbookjob.RatingNote}}</td>
+          </tr>         
+           <tr ng-if="editbookjob.assignTo!=null">
+            <td> This Job Assign to:</td>
+            <td>
+             <span ng-if="editbookjob.assignTo==subadmin._id"  ng-repeat="subadmin in subAdminDetail">
+                {{subadmin.email}}
+             </span>
+            </td>
+          </tr>
+          <tr>
+            <td>Images:</td> 
+            <td><div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"  ng-repeat="filelist in editbookjob.images" style="border:1px solid #000;">
+                        <div class="row">
+                          <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+                            <a id="imageOutline" ng-click="openLightbox($index)">
+
+                            <img border="0" ng-src="/images/{{filelist.imagesName}}" alt="/images/{{filelist.imagesName}}" style="height:100px;width:100px;"/>   </a>      
+                          </div>
+                          <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+                            <label>Comment</label>
+                            <textarea class="form-control" name="Comments" ng-model="filelist.Comments" readonly></textarea>
+                          </div>
+                        </div>
+                       
+              </div></td>           
+          </tr> 
+          </tbody>        
+        </table>    
+        
+
+       <!--  <div ng-if="editbookjob.Status=='Accepted' || editbookjob.Status=='Denied'">
+            <a class="btn btn-success btn-sm disabled"  ng-click="Accept()">Accept</a>
+            <a class="btn btn-danger btn-sm disabled" ng-click="Reject()">Reject</a>
+            <a class="btn btn-primary" ng-click="jobFinished()">Mark As Finished</a><br>           
+
+        </div> -->
+        <div ng-if="editbookjob.Status=='PriceAccepted'">
+          <form name="assignSubAdmin" ng-if="!assignToId">
+            <div class="form-group">               
+                <label class="control-label" for="assignTo">This Job Assign to Admin:</label>               
+                <select class="form-control" id="assignTo" ng-model="editbookjob.assignTo">
+                  <option selected="" value="">--select--</option>
+                  <option ng-selected="editbookjob.assignTo==subadmin._id"value="{{subadmin._id}}" ng-repeat="subadmin in subAdminDetail">{{subadmin.email}}--{{subadmin.shopName}}</option>
+                </select> 
+               <!--  <span class="help-block" ng-show="showError(editBookPrice.price, 'required')">Please Enter Price</span> -->
+            </div>
+             <button ng-if="!assignToId" type="button" class="btn btn-primary" ng-click="assignsubAdmin()">Assign</button>
+
+           <!--   <span ng-repeat="subadmin in subAdminDetail">
+                {{subadmin.email}}
+             </span> -->
+
+          </form>
+        </div>
+    <!--     <div ng-if="editbookjob.Status=='Denied'">
+          <form name="assignSubAdmin">
+            <div class="form-group">               
+                <label class="control-label" for="assignTo">This Job Assign to Admin:</label>               
+                <select class="form-control" id="assignTo" ng-model="editbookjob.assignTo">
+                  <option selected="" value="">--select--</option>
+                  <option ng-selected="editbookjob.assignTo==subadmin._id"value="{{subadmin._id}}" ng-repeat="subadmin in subAdminDetail">{{subadmin.email}}--{{subadmin.shopName}}</option>
+                </select>               
+            </div>
+             <button type="button" class="btn btn-primary" ng-click="assignsubAdmin()">Assign</button>
+          </form>
+        </div> -->
+        <div ng-if="editbookjob.Status!='PriceAccepted' && editbookjob.Status!='Accepted' && editbookjob.Status!='Finished' && editbookjob.Status!='Delivered' && editbookjob.Status!='Declined' && editbookjob.Status!='Allocated' && editbookjob.Status!='Started' && editbookjob.Status!='Rated' && editbookjob.Status!='PriceSent'">            
+            <form name="editBookPrice">
+             <!--  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center alert alert-danger" ng-show="errors" style="padding:5px;">
+                {{errors}}          
+              </div> -->  
+
+              <div class="form-group">               
+                <label class="control-label" for="price">Price:</label>
+                <input name="price" type="text" class="form-control" ng-model="editbookjob.price" id="price" placeholder="Please Enter Price"> 
+              </div>
+              <div class="form-group">
+                  <label class="control-label" for="freightCost">Freight Cost:</label>
+                  <input name="price" type="text" class="form-control" ng-model="editbookjob.freightCost" id="freightCost" placeholder="Please Enter freight Cost"> 
+              </div>
+            </form> 
+          <a class="btn btn-success btn-sm"  ng-click="Accept()">Submit Price</a>
+          <!-- <a class="btn btn-danger btn-sm" ng-click="Reject()">Reject</a> -->
+            <br/>
+            <br/>  
+            OR
+        </div>
+       
+       
+        <div class="form-group" ng-if="editbookjob.Status!='Declined' && editbookjob.Status!='Allocated' && editbookjob.Status!='Accepted' && editbookjob.Status!='Delivered' && editbookjob.Status!='Started' && editbookjob.Status!='Finished' && editbookjob.Status!='Rated' && editbookjob.Status!='PriceSent' && editbookjob.Status!='PriceAccepted'">     
+          
+            <label class="control-label" for="reasonDeclined">Reason For Declined:</label>
+            <textarea class="form-control" id="reasonDeclined" name="reasonDeclined" ng-model="editbookjob.reasonDeclined"></textarea>
+            <br>
+            <a class="btn btn-danger btn-sm"  ng-click="JobDecline()">Decline</a>
+        </div>   
+        <div class="form-group" ng-if="editbookjob.Status=='Declined'">     
+            <label class="control-label" for="reasonDeclined">Reason For Declined:</label>
+            <textarea class="form-control" id="reasonDeclined" name="reasonDeclined" ng-model="editbookjob.reasonDeclined" readonly></textarea>
+        </div>   
+        </div>
+         <!--  <form name="deleteForm"><fieldset>            
+            <alert ng-repeat="alert in deleteAlerts" type="{{alert.type}}" close="closeDeleteAlert($index)">{{alert.msg}}</alert>            
+            <div class="form-group">
+                <button type="button" class="btn btn-danger btn-delete" ng-click="deleteBookjob()">Delete</button>
+            </div>
+        </fieldset></form> -->    
+    </div>
+</div>

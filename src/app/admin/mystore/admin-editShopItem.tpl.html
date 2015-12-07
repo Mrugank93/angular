@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="col-xs-8">
+    <div class="page-header">
+      <h1><a href="/admin/mystore">Back To Store</a></h1>
+    </div>
+    <form name="editShopItemForm" role="form">     
+      <alert ng-repeat="alert in detailAlerts" type="{{alert.type}}" close="closeDetailAlert($index)">{{alert.msg}}</alert>        
+      
+      <div class="form-group">
+        <label class="control-label" for="productName">Product Name:</label>
+        <input name="productName" type="text" placeholder="enter product name" class="form-control" id="productName" ng-model="editItemDetail.productName" required>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="reference">Reference:</label>
+        <input name="reference" type="text" placeholder="enter reference" class="form-control" id="reference" ng-model="editItemDetail.reference" required>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="price">Price:</label>
+        <input name="price" type="text" placeholder="enter price" class="form-control" ng-model="editItemDetail.price" id="price" required>
+      </div>     
+      <div class="form-group">
+
+        <label class="control-label" for="price">Category:</label> {{msg}}      
+        <div class="radio">
+            <label>
+              <input type="radio" name="category" value="Shop" ng-model="editItemDetail.category">
+              Shop
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+              <input type="radio" name="category" value="RepairBits" ng-model="editItemDetail.category">
+              Repair Bits 
+            </label>
+        </div>
+       
+      </div>    
+      
+      <div class="form-group">
+        <label class="control-label" for="itemImage">Images:</label>
+        <button type="button" ngf-select="uploadFiles($file, $invalidFiles)" accept="image/*" ngf-max-height="1000" name="file" ngf-max-size="2MB" >
+          Select File</button>
+          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center alert alert-danger" ng-show="errors" style="padding:5px;">
+                {{errors}}          
+              </div>        -->
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"  ng-model="editItemDetail.itemImage"> 
+                
+              <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6" ng-if="fileUpload[0].name==null">
+                {{editItemDetail.itemImage}}  
+                <img ng-src="/images/{{editItemDetail.itemImage}}" alt="/images/{{editItemDetail.itemImage}}"   style="height:100px;width:100px;"/>
+
+              </div>
+              <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6" ng-if="fileUpload[0].name!=null">
+                  {{fileUpload[0].name}}
+                   <img ng-src="/images/{{fileUpload[0].name}}" alt="/images/{{fileUpload[0].name}}"   style="height:100px;width:100px;"/>
+
+              </div>
+          </div>
+        </div>       
+      </div>
+    
+      <button type="button" class="btn btn-primary" ng-click="editProduct()">Edit Item</button>
+     </form>
+     <br>
+     <form name="deleteForm"><fieldset>            
+            <alert ng-repeat="alert in deleteAlerts" type="{{alert.type}}" close="closeDeleteAlert($index)">{{alert.msg}}</alert>            
+            <div class="form-group">
+                <button type="button" class="btn btn-danger btn-delete" ng-click="deleteProduct()">Delete</button>
+            </div>
+        </fieldset></form>
+  </div>
+</div>

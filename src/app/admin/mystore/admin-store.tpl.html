@@ -1,0 +1,67 @@
+<div class="container" id="admin-categories-index"> 
+	<div class="col-xs-12">
+			<div class="page-header">			            
+			        <center><a class="btn btn-primary" href="/admin/mystore/add">Add New Product</a></center>			           
+			            <h1>Items</h1> 
+			</div> 
+<!-- <p>
+	Search: <input ng-model="search">
+</p> -->
+
+<!-- <table class="table table-bordered">	 -->
+	
+<!-- 	<tr ng-repeat="products in products" >
+		<td class="tdCenter"><img ng-src="/img/products/{{products.productName|lowercase}}.jpg" alt="{{products.productName}}" /></td>
+		<td>
+			<a href="/admin/products/{{product.sku}}" ui-sref="product({productSku: product.sku})"><b>{{product.name}}</b></a><br />
+			{{product.description}}
+			<a href="/admin/mystore/{{products._id}}"><b>{{products.productName}}</b></a><br />
+			{{products.reference}}
+		</td>
+
+		<td class="tdRight">
+			{{products.price | currency}}
+		</td>		
+	</tr>  -->	
+<!-- </table> -->
+ 		<table class="table table-striped" ts-wrapper>
+      <thead>
+      
+          <tr>
+                  <th>Action</th>
+                  <th ts-criteria="productName">Product Name</th>
+                  <th ts-criteria="reference">Reference</th>
+                  <th ts-criteria="price">Price</th>
+                  <th ts-criteria="category">Category</th>                 
+                <!--   <th ts-criteria="Status">Status</th> -->
+
+          </tr>
+    
+      </thead>
+      <tbody>
+      <tr ng-repeat="product in products" ng-click="setSelected(product);" ts-repeat>
+          <td><a class="btn btn-default btn-sm" ng-href="/admin/mystore/{{product._id}}">Edit</a></td>
+          <td ng-bind="product.productName"></td>
+          <td ng-bind="product.reference"></td>         
+          <td ng-bind="product.price"></td>
+          <td ng-bind="product.category"></td>
+      </tr>
+   
+      <tr ng-show="products.length === 0">
+          <td colspan="4">no documents matched</td>
+      </tr>
+      </tbody>
+    </table>
+        <div class="well" ng-if="pages.total > 1">
+            <div class="btn-group pull-left">
+                <button disabled class="btn btn-default">Page {{pages.current}} of {{pages.total}}</button>
+                <button disabled class="btn btn-default">Rows {{items.begin}} - {{items.end}} of {{items.total}}</button>
+            </div>
+            <div class="btn-group pull-right">
+                <button class="btn btn-default" ng-class="{disabled: !pages.hasPrev}" ng-click="prev()">Prev</button>
+                <button class="btn btn-default" ng-class="{disabled: !pages.hasNext}" ng-click="next()"> Next</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+  </div>
+</div>

@@ -1,0 +1,154 @@
+<div class="container">
+  <div class="col-xs-12">
+    <div class="page-header">
+      <h1><a href="/account/bookjobs">Book A Job</a></h1>
+    </div>
+    <form name="addBookJobForm" role="form" enctype="multipart/form-data">
+      <legend>Details</legend>
+      <alert ng-repeat="alert in detailAlerts" type="{{alert.type}}" close="closeDetailAlert($index)">{{alert.msg}}</alert>    
+      <!-- <div class="form-group">
+        <label class="control-label" for="shopRef">Shop Refe:</label>
+        <input name="shopRef" type="text" placeholder="shopRef" class="form-control" ng-model="add.shopRef" required>
+      </div> -->
+      <div class="form-group">
+        <label class="control-label" for="PickupTime">Pick up Time:</label>
+        <pre class="alert alert-info">Time is: {{add.PickupTime | date:'shortTime' }}</pre>
+        <timepicker ng-model="add.PickupTime" ng-change="changed()" hour-step="hstep" minute-step="mstep" show-meridian="ismeridian" required></timepicker>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="pickupdate">Pickupdate:</label>
+        <!-- <input name="pickupdate" type="text" placeholder="pickupdate" class="form-control" id="pickupdate" ng-model="add.pickupdate | date:'fullDate'" required> -->
+        <pre>Selected date is: <em>{{add.pickupdate | date:'fullDate' }}</em></pre>
+        <datepicker ng-model="add.pickupdate" min-date="minDate" show-weeks="true" class="well well-sm" required></datepicker>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="Part">Part:</label>
+        <!--  <input name="Part" type="text" placeholder="Part" class="form-control" ng-model="add.Part" required> -->
+        <select class="form-control" id="Part" ng-model="add.Part" required>
+          <option selected="" value="">--select--</option>
+          <option value="Bumperbar">Bumper bar</option>
+          <option value="headlight">Headlight</option>
+          <option value="grill">Grill</option>
+          <option value="bonnet">Bonnet</option>
+          <option value="guard">Guard</option>
+           <option value="others">Others</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="make">Make:</label>
+        <input name="make" type="text" class="form-control" ng-model="add.make" id="make" placeholder="Please Enter make"> 
+     <!--    <select class="form-control" id="Make" ng-model="add.make" required>
+          <option selected="" value="">--select--</option>
+          <option value="{{job.make}}" ng-repeat="job in makesDetail| unique: 'make'">{{job.make}}</option>
+        </select> -->
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="model">Model:</label>
+        <input name="model" type="text" class="form-control" ng-model="add.model" id="model" placeholder="Please Enter model"> 
+       <!--  <select class="form-control" id="model" ng-model="add.model" required>
+          <option selected="" value="">--select--</option>
+          <option value="{{job.model}}" ng-repeat="job in makesDetail|unique: 'model'|filter:{'make':add.make}">{{job.model}}</option>
+        </select> -->
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="Year">Year:</label> 
+       <!--  <select class="form-control" id="Year" ng-model="add.year" required>
+          <option selected="" value="">--select--</option>
+          <option value="{{job.year}}" ng-repeat="job in makesDetail | filter:{'model':add.model,'make':add.make}| unique: 'year'">{{job.year}}</option>
+        </select> -->
+
+     <!--    <select class="form-control" id="Year" ng-model="add.year" required
+          ng-options="option.value as option.name for option in yearList">
+        </select> -->
+
+        <select class="form-control"  id="Year" ng-model="add.year" required>
+          <option selected="true" value="">--select--</option>
+          <option ng-repeat="option in yearList" value="{{option.value}}">{{option.name}}</option>
+      </select>
+
+       <!--   <select class="form-control" id="Year" ng-model="add.year" required>
+          <option selected="" value="">--select--</option>
+          <option selected="" value="1971">1971</option>
+          <option selected="" value="1972">1972</option>
+          <option selected="" value="1973">1973</option>
+          <option selected="" value="1974">1974</option>
+          <option selected="" value="1975">1975</option>
+          <option selected="" value="1976">1976</option>
+          <option selected="" value="1977">1977</option>
+          <option selected="" value="1978">1978</option>
+          <option selected="" value="1979">1979</option>
+          <option selected="" value="1980">1980</option>
+          <option selected="" value="1981">1981</option>
+          <option selected="" value="1982">1982</option>
+          <option selected="" value="1983">1983</option>
+          <option selected="" value="1984">1984</option>
+          <option selected="" value="1985">1985</option>
+          <option selected="" value="1986">1986</option>
+          <option selected="" value="1987">1987</option>
+          <option selected="" value="1988">1988</option>
+          <option selected="" value="1989">1989</option>
+          <option selected="" value="1990">1990</option>
+          <option selected="" value="1991">1991</option>
+          <option selected="" value="1992">1992</option>
+          <option selected="" value="1993">1993</option>
+          <option selected="" value="1994">1994</option>
+          <option selected="" value="1995">1995</option>
+          <option selected="" value="1996">1996</option>
+          <option selected="" value="1997">1997</option>
+          <option selected="" value="1998">1998</option>
+          <option selected="" value="1999">1999</option>
+          <option selected="" value="2000">2000</option>
+          <option selected="" value="2001">2001</option>
+          <option selected="" value="2002">2002</option>
+          <option selected="" value="2003">2003</option>
+          <option selected="" value="2004">2004</option>
+          <option selected="" value="2005">2005</option>
+          <option selected="" value="2006">2006</option>
+          <option selected="" value="2007">2007</option>
+          <option selected="" value="2008">2008</option>
+          <option selected="" value="2009">2009</option>
+          <option selected="" value="2010">2010</option>
+          <option selected="" value="2011">2011</option>
+          <option selected="" value="2012">2012</option>
+          <option selected="" value="2013">2013</option>
+          <option selected="" value="2014">2014</option>
+          <option selected="" value="2015">2015</option>
+          <option selected="" value="2016">2016</option> -->
+        
+       <!--    <option value="{{job.year}}" ng-repeat="job in makesDetail| unique: 'year'">{{job.year}}</option> -->
+        </select>
+      </div>    
+      <div class="form-group">
+        <label class="control-label" for="images">Images:</label>
+        <button ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" name="file" ngf-max-size="1MB" required>
+          Select Files</button><div ng-show="msg">{{msg}}</div>
+          <!-- <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center alert alert-danger" ng-show="errors" style="padding:5px;">
+                {{errors}}          
+              </div>        -->
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6"  ng-repeat="filelist in fileUploadsList" style="border:1px solid #000;">
+            <div class="row">
+              <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+                <img ng-src="/images/{{filelist.name}}" alt="/images/{{filelist.name}}"   style="height:100px;width:100px;"/>
+              </div>
+              <div class="col-xs-6 col-lg-6 col-md-6 col-sm-6">
+                <label>Comment</label>
+                <textarea class="form-control" name="imgComment" ng-model="filelist.imgComment"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12">
+                <button type="button" class="btn btn-default btn-xs" ng-click="deleteFilesFromTheArray(filelist);">
+                  Delete
+                </button>             
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="hidden" ng-model="add.userID">
+      
+      <button type="button" class="btn btn-primary" ng-disabled="!canSave(addBookJobForm)" ng-click="addBookJob()">Add New</button>
+     </form>
+  </div>
+</div>

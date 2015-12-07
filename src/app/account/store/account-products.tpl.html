@@ -1,0 +1,76 @@
+<div class="container" id="admin-categories-index"> 
+<p class="text-info">
+    <img ng-src="/images/{{ItemDetail.itemImage}}" alt="{{ItemDetail.itemImage}}" style="height:50px;width:50px;" />
+    {{ItemDetail.productName}}<br />
+</p>
+
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="col-md-8">
+
+            <!-- product info -->
+            <table class="table table-bordered">
+
+                <tr class="well">
+                    <td class="tdRight" colspan="3" >
+                        <a href="/account/store/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                            <i class="glyphicon glyphicon-shopping-cart" />
+                            <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                         <!--    <span ng-show="cart.getTotalCount(ItemDetail.productName) > 0"><br />this item is in the cart</span> -->
+                        </a>
+                          
+                    </td>
+                </tr>
+            <!--     <tr>
+                    <td class="tdRight"><b>Product Image</b></td>
+                    <td class="tdCenter"><img ng-src="/uploads/{{ItemDetail.itemImage}}" style="height:90px;width:90px;"/></td>
+                    
+                </tr> -->
+                <tr>
+                    <td class="tdRight"><b>Product Name</b></td>
+                    <td class="tdCenter">{{ItemDetail.productName}}</td>
+                    
+                </tr>
+                <tr>
+                    <td class="tdRight"><b>Reference</b></td>
+                    <td class="tdCenter">{{ItemDetail.reference}}</td>
+                </tr>
+                 <tr>
+                    <td class="tdRight"><b>Price</b></td>
+                    <td class="tdCenter">{{ItemDetail.price}}</td>
+                </tr>
+                <tr>
+                    <td class="tdRight"><b>Category</b></td>
+                    <td class="tdCenter">{{ItemDetail.category}}</td>
+                </tr>
+                <tr class="well">
+                    <td class="tdRight" colspan="3" >
+                        <a href="/account/store/cart" title="go to shopping cart" ng-disabled="cart.getTotalCount() < 1">
+                            <i class="glyphicon glyphicon-shopping-cart" />
+                            <b>{{cart.getTotalCount()}}</b> items, <b>{{cart.getTotalPrice() | currency}}</b>
+                           <!--  <span ng-show="cart.getTotalCount(ItemDetail.productName) > 0"><br />this item is in the cart</span> -->
+                        </a>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
+
+        <!-- buttons -->
+        <div class="col-md-4">
+            <button 
+                class="btn btn-block btn-success" 
+                ng-click="cart.addItem(ItemDetail.productName, ItemDetail.reference, ItemDetail.price, 1)">
+                <i class="glyphicon glyphicon-shopping-cart" /> add to cart
+            </button>
+            <button 
+                class="btn btn-block btn-danger" 
+                ng-click="cart.addItem(ItemDetail.productName, ItemDetail.reference, ItemDetail.price, -10000)"
+                ng-disabled="cart.getTotalCount(ItemDetail.productName) < 1">
+                <i class="glyphicon glyphicon-trash" /> remove from cart
+            </button>         
+            <a href="/account/store" class="btn btn-block btn-default"><i class="glyphicon glyphicon-chevron-left" /> back to store</a>
+        </div>
+    </div>
+</div>
+</div>

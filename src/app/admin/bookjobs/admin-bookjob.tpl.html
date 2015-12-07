@@ -1,0 +1,78 @@
+<div class="container" id="admin-categories-index">
+    <div class="col-xs-12">
+        <div class="page-header">
+            <div class="section">
+               <!--  <h3> -->
+                   <!--  <a id="demo" class="anchor" href="#demo" aria-hidden="true"> -->
+                   <!--  <span class="octicon octicon-link"></span> -->
+                    <!-- </a> -->
+                <!-- </h3> -->
+                
+                <!-- <div flash-message ></div>            -->     
+            </div>
+          <!--   <center><a class="btn btn-primary" href="/admin/bookjobs/add">Create new Job</a></center> -->
+           <!--  <h1>Jobs</h1> -->
+        </div>
+  
+        <table class="table table-striped" ts-wrapper>
+            <thead>
+           <!--  <tr>
+               
+                <th ts-criteria="OrderNo" ts-default="descending">OrderNo</th>
+                <th ts-criteria="shopName">Shop name</th>
+                <th ts-criteria="timeOrdered">Ordered At</th>
+                <th ts-criteria="Status">Status</th>
+
+            </tr> -->
+                <tr>
+                    <th ts-criteria="OrderNo" ts-default="descending">Order No</th>
+                    <th ts-criteria="shopName">Shop Name</th>
+                    <th ts-criteria="timeOrdered">Order Time</th>
+                    <th ts-criteria="jobStarted">Started Time</th>
+                    <th ts-criteria="acceptedTime">Accepted Time</th>
+                    <th ts-criteria="deliveredTime">Delivered Time</th>
+                    <th ts-criteria="price">Price</th>
+                    <th ts-criteria="freightCost">freightCost</th>
+                    <th ts-criteria="Rating">Ratings</th>
+                    <th ts-criteria="Status">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+            <!-- <tr ng-repeat="job in Jobs" ng-click="setSelected(job);" ng-style="checkRead(job);">
+              
+                <td ng-bind="job.OrderNo"></td>
+                <td ng-bind="job.shopName"></td>
+                <td ng-bind="job.timeOrdered|dateFormats"></td>
+                <td class="nowrap" ng-style="set_color(job)">{{job.Status}}</td>
+    checkRead        </tr> -->
+            <tr style="cursor: pointer; " ng-repeat="job in Jobs"  ng-click="setSelected(job);" ng-style="checkRead(job);" ts-repeat>
+                <td ng-bind="job.OrderNo"></td>
+                <td ng-bind="job.shopName"></td>
+                <td ng-bind="job.timeOrdered|dateFormats"></td>
+                <td ng-bind="job.jobStarted|date:'medium'"></td>
+                <td ng-bind="job.acceptedTime|date:'medium'"></td>
+                <td ng-bind="job.deliveredTime|date:'medium'"></td>
+                <td>${{job.price}}</td>
+                <td>${{job.freightCost}}</td>
+                <td ng-if="job.RatingNote!=null">Yes</td>
+                <td ng-if="job.RatingNote==null">No</td>
+                <td class="nowrap" ng-style="set_color(job)">{{job.Status}}</td>
+            </tr>    
+            <tr ng-show="Jobs.length === 0">
+                <td colspan="4">no documents matched</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="well" ng-if="pages.total > 1">
+            <div class="btn-group pull-left">
+                <button disabled class="btn btn-default">Page {{pages.current}} of {{pages.total}}</button>
+                <button disabled class="btn btn-default">Rows {{items.begin}} - {{items.end}} of {{items.total}}</button>
+            </div>
+            <div class="btn-group pull-right">
+                <button class="btn btn-default" ng-class="{disabled: !pages.hasPrev}" ng-click="prev()">Prev</button>
+                <button class="btn btn-default" ng-class="{disabled: !pages.hasNext}" ng-click="next()"> Next</button>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

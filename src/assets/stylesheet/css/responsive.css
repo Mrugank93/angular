@@ -1,0 +1,403 @@
+/*Extra Large Desktop Layout */
+@media only screen and (min-width:1500px){
+.mainmenu{display:block;}
+.slicknav_menu{display:none}
+
+}
+
+
+/* Large Desktop Layout */
+@media only screen and (min-width: 1200px) {
+.mainmenu{display:block;}
+.slicknav_menu{display:none}
+
+
+}
+
+/* Medium Desktop Layout */
+@media only screen and (min-width: 992px) and (max-width: 1200px) {
+.mainmenu{display:block;}
+.slicknav_menu{display:none}
+.color_menu ul li a {
+  border-radius: 4px;
+  color: #fff;
+  display: inline-block;
+  font-family: "ProximaNova-Semibold";
+  margin-left: 2px;
+  padding: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.mainmenu ul li a {
+  font-size: 14px;
+  padding: 8px;
+ 
+}
+.color_menu ul li a {
+  margin-left: 1px;
+  padding: 5px;
+ 
+}
+.two_store img {
+  margin-left: 10px;
+  width: 135px;
+}
+.footer_bottom_area {
+  margin: 0 auto;
+  width: 1010px;
+}
+.single_footer {
+  float: left;
+  width: 15%;
+}
+.text_1 h2 {
+  font-size: 20px;
+}
+.inside_icon ul li {
+  display: inline-block;
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+}
+
+/* Tablet Layout: 768px. */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+.mainmenu{display:block;}
+.slicknav_menu{display:none;}
+#search {
+  width: 105px;
+}
+.mainmenu ul li a {
+  padding: 8px;
+ }
+.color_text {
+  margin: 20px 0;
+}
+.color_menu {
+  margin-top: 15px;
+}
+.leading_away_area h1 {
+  font-size: 25px;
+}
+.small_text h3 {
+  font-size: 16px;
+}
+.small_text p {
+  font-size: 16px;
+}
+.Traning img {
+  margin-bottom: 5px;
+  padding: 3px;
+}
+.your_busniess_area h1 {
+  font-size: 22px;
+  margin-bottom: 45px;
+  margin-top: 30px;
+  
+}
+.color_menu ul li a {
+  margin-left: 2px;
+  padding: 6px;
+}
+.revolution img {
+  width: 100%;
+}
+.revolution h2 {
+  font-size: 15px;
+}
+.app_logo h1 {
+  font-size: 28px;
+}
+.app_logo {
+  margin-top: 0px;
+}
+.registration {
+  margin-bottom: 18px;
+}
+.registration h2 {
+  font-size: 22px;
+  font-weight: 300;
+}
+.two_store img {
+  margin-left: 10px;
+  width: 100px;
+}
+.two_store p {
+  font-size: 16px;
+}
+.total_visitor {
+  margin-bottom: 0;
+  margin-left: 15px;
+  margin-top: 12px;
+  position: relative;
+}
+.industry_devil h1 {
+  font-size: 22px;
+}
+#subscriber {
+  margin-top: 20px;
+}
+.inside_all h2 {
+  font-size: 13px;
+  font-weight: 700;
+  padding: 0 10px;
+}
+.dolor_site {
+  float: left;
+  width: 580px;
+}
+.partners {
+  margin-top: 5%;
+  overflow: hidden;
+}
+.partners h1 {
+  font-size: 28px;
+}
+.inside_icon {
+  text-align: center;
+}
+.inside_icon ul li img{margin-bottom: 15px;}
+.industry_partners_area {
+  background: #e3e3e3 none repeat scroll 0 0;
+  padding: 2% 0;
+}
+.footer_bottom_area {
+  margin: 0 auto;
+  width: 750px;
+}
+.single_footer {
+  float: left;
+  width: 15%;
+}
+.color_menu {
+  margin-top: 35px;
+}
+.text_1 h2 {
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+}
+
+/*small Mobile Layout: 320px. */
+@media only screen and (max-width: 767px) {
+.mainmenu{display:none;}
+.slicknav_menu{display:block;}
+.header_input {
+  text-align: center;
+}
+.plast_logo_area {
+  text-align: center;
+}
+.color_menu ul li {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.color_menu ul li a {
+  margin-left: 5px;
+  padding: 8px;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.color_text {
+  margin: 20px 0;
+}
+.leading_away_area h1 {
+  font-size: 16px;
+}
+.small_text p {
+  color: #999999;
+  font-family: "Lato",sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 5px 0;
+  text-align: center;
+}
+.small_text h3 {
+  font-size: 14px;
+  margin: 6px 0;
+ 
+}
+.Traning img {
+  margin-bottom: 20px;
+}
+.your_busniess_area h1 {
+  font-size: 18px;
+  font-weight: 300;
+  margin-bottom: 25px;
+  margin-top: 0;}
+
+.app_logo h1 {
+  font-size: 25px;
+  font-weight: 700;
+  margin-top: 25px;
+  padding: 0;
+}
+.registration h2 {
+  font-size: 22px;
+  font-weight: 300;
+}
+.registration {
+  margin-bottom: 25px;
+}
+.two_store {
+  text-align: center;
+}
+.two_store img {
+  margin-bottom: 5px;
+  margin-left: 25px;
+  margin-top: 10px;
+}
+.industry_devil h1 {
+  font-size: 25px;
+  margin: 15px 0;
+  padding: 0;
+}
+.total_img {
+  margin-top: 25px;
+}
+.our_plane_experts h1 {
+  font-size: 18px;
+  margin: 5% 0;
+  padding: 0;
+}
+.linked_in {
+  float: none;
+  text-align:center;
+}
+.linked_in img {
+  margin-top: 0;
+}
+.dolor_site {
+  float: left;
+  text-align: center;
+}
+.text_in_area h1 {
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.inside_icon ul li:first-child {
+  display: inherit;
+  margin-left: 50px;
+}
+
+.inside_icon ul li {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+.inside_icon {
+  text-align: center;
+}
+.footer_bottom_area {
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+.single_footer {
+  float: left;
+  width: 100%;
+}
+
+
+.two_store p {
+  font-size: 14px;
+  font-weight: 700;
+}
+.two_store {
+  text-align: left;;
+}
+.two_store img {
+  margin-bottom: 5px;
+  margin-left:5px;
+  margin-top: 10px;
+  width: 90px;
+}
+
+.inside_all img {
+  width: 100%;
+}
+.revolution img {
+  width: 100%;
+}
+.text_1 h2 {
+  color: #ffffff;
+  font-family: "Lato",sans-serif;
+  font-size: 18px;
+  font-weight: 300;
+  margin: 10px;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 9999;
+}
+
+
+
+
+
+
+
+}
+/* Wide Mobile Layout: 480px. */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+.mainmenu{display:none;}
+.slicknav_menu{display:block;}
+.inside_all img {
+  width: 100%;
+}
+
+.revolution img {
+  width: 100%;
+}
+.Traning img {
+  margin-bottom: 20px;
+  width: 100%;
+}
+.two_store img {
+  margin-bottom: 5px;
+  margin-left: 9px;
+  margin-top: 10px;
+  width: 145px;
+}
+.header_top_manu {
+  background: #bbbbbb none repeat scroll 0 0;
+  padding: 10px 0;
+}
+.text_1 h2 {
+  color: #ffffff;
+  font-family: "Lato",sans-serif;
+  font-size: 20px;
+  font-weight: 300;
+  margin: 10px;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 9999;
+}
+
+
+
+
+
+
+
+
+}
+
+

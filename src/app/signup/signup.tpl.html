@@ -1,0 +1,107 @@
+<div class="container" id="signup">
+    <div class="col-sm-6">
+        <div class="page-header"><h1>Sign Up</h1></div>
+        <form name="signupForm">
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.msg}}</alert>
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.username)}">
+                <label class="control-label" for="username">Username:</label>
+                <input type="text" name="username" id="username" class="form-control" ng-model="user.username" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.username, 'required')">This field is required</span>
+                <span class="help-block" ng-show="showError(signupForm.username, 'server')">{{errfor.username}}</span>
+            </div>
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.email)}">
+                <label class="control-label" for="email">Enter Your Email:</label>
+                <input type="email" name="email" id="email" class="form-control" ng-model="user.email" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.email, 'required')">This field is required</span>
+                <span class="help-block" ng-show="showError(signupForm.email, 'email')">Please enter a valid email</span>
+                <span class="help-block" ng-show="showError(signupForm.email, 'server')">{{errfor.email}}</span>
+            </div>
+           <!--  <div class="form-group" ng-class="{'has-error': hasError(signupForm.secondaryemail)}">
+                <label class="control-label" for="secondaryemail">Secondary Email:</label>
+                <input type="email" name="secondaryemail" id="secondaryemail" class="form-control" ng-model="user.secondaryemail">
+               
+                <span class="help-block" ng-show="showError(signupForm.secondaryemail, 'email')">Please enter a valid email</span>                
+            </div> -->
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.password)}">
+                <label class="control-label" for="password">Create a Password:</label>
+                <input type="password" name="password" id="password" class="form-control" ng-model="user.password" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.password, 'required')">This field is required</span>
+                <span class="help-block" ng-show="showError(signupForm.password, 'server')">{{errfor.password}}</span>
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.shopName)}">
+                <label class="control-label" for="shopName">Shop Name:</label>
+                <input type="text" name="shopName" id="shopName" class="form-control" ng-model="user.shopName" required>
+                <span class="help-block" ng-show="showError(signupForm.shopName, 'required')">This field is required</span>                
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.ABN)}">
+                <label class="control-label" for="ABN">ABN:</label>
+                <input type="text" name="ABN" id="ABN" class="form-control" ng-model="user.ABN" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.ABN, 'required')">This field is required</span>              
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.Address)}">
+                <label class="control-label" for="Address">Address:</label>
+                <textarea id="Address" name="Address" id="Address" class="form-control" ng-model="user.Address" required server-error></textarea>
+                <span class="help-block" ng-show="showError(signupForm.Address, 'required')">This field is required</span>                
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.Postcode)}">
+                <label class="control-label" for="Postcode">Postcode:</label>
+                <input type="text" name="Postcode" id="Postcode" class="form-control" ng-model="user.Postcode" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.Postcode, 'required')">This field is required</span>              
+            </div>
+
+            <div class="form-group" >
+                <label class="control-label" for="State">State:</label>            
+                <select class="form-control" id="State" ng-model="user.State" required>
+                          <option selected="" value="">--select--</option>
+                          <option value="NSW">New South Wales</option>
+                          <option value="QLD">Queensland</option>
+                          <option value="SA">South Australia</option>
+                          <option value="TAS">Tasmania</option>
+                          <option value="VIC">Victoria</option>
+                          <option value="WA">Western Australia</option>
+                </select> 
+               <!--  <span class="help-block" ng-show="showError(signupForm.State, 'required')">This field is required</span>     -->         
+            </div>
+            
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.ContactPerson)}">
+                <label class="control-label" for="ContactPerson">ContactPerson:</label>
+                <input type="text" name="ContactPerson" id="ContactPerson" class="form-control" ng-model="user.ContactPerson" required server-error>
+                <span class="help-block" ng-show="showError(signupForm.ContactPerson, 'required')">This field is required</span>              
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.Worknumber)}">
+                <label class="control-label" for="Worknumber">Work Number:</label>
+                <input type="text" name="Worknumber" id="Worknumber" class="form-control" ng-model="user.Worknumber" required>
+                <span class="help-block" ng-show="showError(signupForm.Worknumber, 'required')">This field is required</span>                
+            </div>
+
+            <div class="form-group" ng-class="{'has-error': hasError(signupForm.Mobile)}">
+                <label class="control-label" for="Mobile">Mobile Number:</label>
+                <input type="text" name="Mobile" id="Mobile" class="form-control" ng-model="user.Mobile" required>
+                <span class="help-block" ng-show="showError(signupForm.Mobile, 'required')">This field is required</span>                
+            </div>
+
+
+
+            <div class="form-group">
+                <button type="button" class="btn btn-primary btn-signup" ng-disabled="!canSave(signupForm)" ng-click="submit()">Create My Account</button>
+            </div>
+        </form>
+        <div ng-if="social">
+            <hr>
+            <p>Or sign in using...</p>
+            <div class="btn-group btn-group-justified">
+                <a ng-repeat="(provider, property) in social" ng-href="{{property.login}}" target="_self" class="btn btn-info"><i ng-class="'fa ' + property.icon + ' fa-lg'"></i> {{property.text}}</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 marketing">
+        <div class="page-header"><h1>Campy Benefits</h1></div>
+        <p class="lead">Really, you will love it inside. It's super great!</p>
+        <i class="fa fa-thumbs-o-up super-awesome"></i>
+    </div>
+</div>
